@@ -9,9 +9,11 @@ A high-performance, real-time **2.4GHz Wi-Fi Spectrum Analyzer & Rolling Spectro
 
 ---
 
-## 🌟 Key Features
+## 📸 Screenshots & User Interface
 
 ### 📊 1. Real-Time 2.4GHz Spectrum Analyzer (`SPECTRUM` Tab)
+![ESP32 Spectrum Radar Dashboard](docs/screenshots/spectrum_radar.png)
+
 - **13-Channel Bar Density Graph**: Visualizes Access Point saturation across all 2.4GHz Wi-Fi channels (1–13).
 - **Primary Channel Highlight**: Gold indicators for non-overlapping channels (**1**, **6**, and **11**).
 - **Congestion Color Code**:
@@ -20,7 +22,11 @@ A high-performance, real-time **2.4GHz Wi-Fi Spectrum Analyzer & Rolling Spectro
   - 🔴 **Congested**: 6+ APs.
 - **Live Diagnostics**: Displays the quietest recommended channel and the strongest SSID broadcasting on the peak channel.
 
+---
+
 ### 📶 2. Interactive Network Inspector (`DEVICES` Tab)
+![Interactive Network Inspector Modal](docs/screenshots/network_inspector.png)
+
 - **Touch-Activated Inspector Modal**: Tapping any network on the list pops up a sleek dark glassmorphic inspector card displaying:
   - **BSSID (MAC Address)**
   - **Center Frequency & Channel** (e.g. `Ch 6 (2.437 GHz)`)
@@ -28,7 +34,11 @@ A high-performance, real-time **2.4GHz Wi-Fi Spectrum Analyzer & Rolling Spectro
   - **Signal Strength Bar Meter**: Animated percentage gauge (`-30 dBm` Excellent to `-100 dBm` Weak).
 - **Smooth Scroll Engine**: Preserves list scroll Y-position during background scan updates.
 
+---
+
 ### 🌊 3. Rolling Spectrogram Waterfall Heatmap (`WATERFALL` Tab)
+![Rolling Spectrogram Waterfall Heatmap](docs/screenshots/waterfall_heatmap.png)
+
 - **13×8 Heatmap Matrix**: Displays a 24-second rolling history of Wi-Fi congestion across all 13 channels.
 - **Dynamic Spectral Decay**: Rows shift downwards automatically as new scan frames arrive.
 
@@ -68,7 +78,7 @@ The application leverages **FreeRTOS multi-core task pinning** to maintain liqui
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/ESP32-Spectrum-Radar.git
+   git clone https://github.com/earlchirchir/ESP32-Spectrum-Radar.git
    cd ESP32-Spectrum-Radar
    ```
 
