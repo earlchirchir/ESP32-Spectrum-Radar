@@ -1,10 +1,11 @@
 # 📶 ESP32 Spectrum Radar
 
-A high-performance, real-time **2.4GHz Wi-Fi Spectrum Analyzer & Rolling Spectrogram Waterfall** engineered for the **ESP32 Cheap Yellow Display (ESP32-2432S022C / CYD)** using **FreeRTOS** and **LVGL v9**.
+A high-performance, real-time **2.4GHz Wi-Fi Spectrum Analyzer & Rolling Spectrogram Waterfall** engineered for the **ESP32 Cheap Yellow Display (ESP32-2432S022C / CYD)** in **C++ with PlatformIO**.
+
+Libraries used: `esp32_smartdisplay` (display and touch driver, which uses LVGL for drawing) and the ESP32 Arduino core.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Framework](https://img.shields.io/badge/framework-Arduino%20%2F%20ESP32-green.svg)
-![GUI](https://img.shields.io/badge/GUI-LVGL%20v9-orange.svg)
 ![PlatformIO](https://img.shields.io/badge/IDE-PlatformIO-orange.svg)
 
 ---
@@ -46,7 +47,7 @@ A high-performance, real-time **2.4GHz Wi-Fi Spectrum Analyzer & Rolling Spectro
 
 ## 🏗️ Architecture & Multithreading
 
-The application leverages **FreeRTOS multi-core task pinning** to maintain liquid-smooth 60 FPS UI responsiveness while performing active radio frequency scans:
+Network scanning and screen drawing run on separate ESP32 cores, so the display stays responsive while the radio scans:
 
 ```
                   ┌─────────────────────────────────────────┐
@@ -57,7 +58,7 @@ The application leverages **FreeRTOS multi-core task pinning** to maintain liqui
             ▼                                                     ▼
     ┌───────────────┐                                     ┌───────────────┐
     │    CORE 0     │                                     │    CORE 1     │
-    │ Network Scan  │                                     │    LVGL v9    │
+    │ Network Scan  │                                     │    Display    │
     │  Task (3s)    │                                     │  Rendering    │
     └───────┬───────┘                                     └───────┬───────┘
             │                                                     │
